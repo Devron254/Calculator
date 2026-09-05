@@ -2,6 +2,19 @@ const display = document.querySelector(".display");
 
 const numberButtons = document.querySelectorAll(".number");
 
+numberButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        
+        if (display.textContent === "0") {
+            display.textContent = button.textContent;
+    } else {
+            display.textContent = display.textContent + button.textContent;
+    }
+
+        });
+    });
+    
+
 function add(a,b) {
     return a + b;
 }
