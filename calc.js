@@ -7,6 +7,7 @@ const equalsButton = document.querySelector(".equals");
 let firstNumber;
 let operator;
 let shouldClearDisplay = false;
+let justCalculated = false;
 
 const operatorButtons = document.querySelectorAll(".operator");
 
@@ -40,9 +41,15 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", () => {
+    if (justCalculated === true) {
+        return;
+    }
+    
     const secondNumber = Number(display.textContent);
     const result = operate(firstNumber, operator, secondNumber);
     display.textContent = result;
+    shouldClearDisplay = true;
+    justCalculated = true;
 });
 
 function add(a,b) {
