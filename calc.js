@@ -4,6 +4,8 @@ const numberButtons = document.querySelectorAll(".number");
 
 const equalsButton = document.querySelector(".equals");
 
+const clearButton = document.querySelector(".clear");
+
 let firstNumber;
 let operator;
 let shouldClearDisplay = false;
@@ -16,6 +18,7 @@ numberButtons.forEach((button) => {
         if (shouldClearDisplay === true) {
             display.textContent = button.textContent;
             shouldClearDisplay = false;
+            justCalculated = false;
 
         } else if (operator === undefined) {
         
@@ -37,6 +40,7 @@ operatorButtons.forEach((button) => {
         firstNumber = Number(display.textContent);
         operator = button.textContent;
         shouldClearDisplay = true;
+        justCalculated = false;
     });
 });
 
@@ -50,6 +54,15 @@ equalsButton.addEventListener("click", () => {
     display.textContent = result;
     shouldClearDisplay = true;
     justCalculated = true;
+});
+
+clearButton.addEventListener("click", () => {
+    display.textContent = "0";
+    firstNumber = undefined;
+    operator = undefined;
+    shouldClearDisplay = false;
+    justCalculated = false;
+
 });
 
 function add(a,b) {
