@@ -109,3 +109,27 @@ function operate(a,operator,b) {
         return divide(a,b);
     }
 }
+
+document.addEventListener("keydown", (event) => {
+    const key = event.key;
+
+    if (key >= "0" && key <= "9") {
+        numberButtons.forEach((button) => {
+            if (button.textContent === key) {
+                button.click();
+            }
+        });
+    } else if (key === ".") {
+        decimalButton.click();
+    } else if (["+", "-", "*", "/"].includes(key)) {
+        operatorButtons.forEach((button) => {
+            if (button.textContent === key) {
+                button.click();
+            }
+        });
+    } else if (key === "Enter" || key === "=") {
+        equalsButton.click();
+    } else if (key === "Escape") {
+        clearButton.click();
+    }
+});
