@@ -6,6 +6,8 @@ const equalsButton = document.querySelector(".equals");
 
 const clearButton = document.querySelector(".clear");
 
+const decimalButton = document.querySelector(".decimal");
+
 let firstNumber;
 let operator;
 let shouldClearDisplay = false;
@@ -34,9 +36,21 @@ numberButtons.forEach((button) => {
         });
     });
 
+decimalButton.addEventListener("click", () => {
+        if (shouldClearDisplay === true) {
+            display.textContent = "0.";
+            shouldClearDisplay = false;
+            justCalculated = false;
+        } else if (!display.textContent.includes(".")) {
+            display.textContent = display.textContent + ".";
+        }
+    });
     
 operatorButtons.forEach((button) => {
     button.addEventListener("click", () => {
+        if (display.textContent === "Error") {
+            return;
+        }
         firstNumber = Number(display.textContent);
         operator = button.textContent;
         shouldClearDisplay = true;
@@ -78,6 +92,9 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
+    if (b === 0) {
+        return "Error";
+    }
     return a / b;
 }
 
