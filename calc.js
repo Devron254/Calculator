@@ -51,6 +51,25 @@ operatorButtons.forEach((button) => {
         if (display.textContent === "Error") {
             return;
         }
+
+        if (
+            operator !== undefined &&
+            shouldClearDisplay === false &&
+            justCalculated === false
+        ) {
+            const secondNumber = Number(display.textContent);
+
+            const result = operate(firstNumber, operator, secondNumber);
+
+            if (result === "Error") {
+                display.textContent = result;
+                shouldClearDisplay = true;
+                return;
+            }
+
+            display.textContent = result;
+        }
+
         firstNumber = Number(display.textContent);
         operator = button.textContent;
         shouldClearDisplay = true;
