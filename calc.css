@@ -54,6 +54,7 @@
 .equals {
     background-color: #f08a24 !important;
     color: white !important;
+    grid-column: span 2;
 }
 
 .clear {
