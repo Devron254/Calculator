@@ -78,6 +78,10 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", () => {
+    if (operator === undefined || firstNumber === undefined) {
+    return;
+}
+
     if (justCalculated === true) {
         return;
     }
@@ -126,6 +130,8 @@ function operate(a,operator,b) {
         return multiply(a,b);
     } else if (operator === "/") {
         return divide(a,b);
+
+        return "Error";
     }
 }
 
