@@ -87,6 +87,10 @@ equalsButton.addEventListener("click", () => {
         return;
     }
 
+    if (shouldClearDisplay === true) {
+    return;
+    }
+
     if (justCalculated === true) {
         return;
     }
